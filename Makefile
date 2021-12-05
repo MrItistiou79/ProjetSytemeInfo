@@ -5,7 +5,7 @@ BASH=Projet1.bash
 	
 #Compilation 
 	
-all: philo prod ecriv 
+all: philo prod ecriv test-and-set
 
 philo: philosophe.o
 	$(CC) -o $@ $< $(CFLAGS) 
@@ -16,6 +16,9 @@ prod: producer.o
 ecriv: ecrivain.o
 	$(CC) -o $@ $< $(CFLAGS) 
 	
+test-and-set: test-and-set.o
+	$(CC) -o $@ $< $(CFLAGS)
+	
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 	
@@ -25,6 +28,8 @@ clean :
 	-rm -f ecriv
 	-rm -f prod
 	-rm -f philo
+	-rm -f test-and-set
+
 
 #Mesures
 
