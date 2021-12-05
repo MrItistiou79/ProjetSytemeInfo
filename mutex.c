@@ -1,6 +1,11 @@
 #include "mutex.h"
 
 
+int main(){
+	return 0;
+}
+
+
 int mutex_init(mutex_t *mutex){
 	mutex->free = 0;
 	return 0;

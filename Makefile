@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS= -g -lpthread
 NCPU=2
 BASH=Projet1.bash
-	
+HEADERS=-I	
 #Compilation 
 	
 all: philo prod ecriv test-and-set
@@ -16,7 +16,8 @@ prod: producer.o
 ecriv: ecrivain.o
 	$(CC) -o $@ $< $(CFLAGS) 
 	
-test-and-set: test-and-set.o
+	
+test-and-set: mutex.o test-and-set.o
 	$(CC) -o $@ $< $(CFLAGS)
 	
 %.o: %.c

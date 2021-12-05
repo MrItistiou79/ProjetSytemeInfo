@@ -10,7 +10,7 @@ int sectionCritique(){
 	while (rand() > RAND_MAX/10000){}
 }
 
-int run(){
+void * run(){
 	int count = 0;
 	while (count <= 6400/n_threads){
 		mutex_lock(mutex);
@@ -21,7 +21,7 @@ int run(){
 	}
 }
 
-int main(int argc, char* argv){
+int main(int argc, char* argv[]){
 	n_threads = atoi(argv[1]);
 	
 	printf("initialisation mutex\n");
