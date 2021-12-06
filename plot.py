@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import argparse
+import numpy as np
 
 def parse():
 
@@ -13,9 +14,8 @@ def plot(filename, title):
 		lines = f.readlines()[1::]
 		data_moustache = []
 		names_moustache = []
-		
-		nbr_threads = [0]
-		av_time = [0]		
+	
+		av_time = []		
 		
 		for i in range(0, len(lines), 5):
 			#moustache
@@ -31,20 +31,22 @@ def plot(filename, title):
 				t += l
 				
 			av_time.append(t/5)
-			nbr_threads.append(i//5)
 			
 			data_moustache.append(time)
 				
 		fig, ax = plt.subplots(2,1, figsize=(8,10))
-
+		nbr_threads = np.arange(len(av_time))
 		print(av_time)
 		ax[0].boxplot(data_moustache)
 		ax[0].set_xticklabels(names_moustache)
 		ax[0].set_ylabel("temps [s]", fontsize=12)
 		ax[0].set_xlabel("Nombre de threads", fontsize=12)
 		ax[0].set_title(title, fontsize=15)
-
-		ax[1].plot(nbr_threads, av_time)	
+		
+		
+		print(nbr_threads, av_time)
+		ax[1].plot(nbr_threads, av_time, 'ro')
+		ax[1].set(xlim=(0, nbr_threads[len(nbr_threads)-1]))	
 		ax[1].set_ylabel("temps [s]", fontsize=12)
 		ax[1].set_xlabel("Nombre de threads", fontsize=12)
 		ax[1].set_xticklabels(nbr_threads)

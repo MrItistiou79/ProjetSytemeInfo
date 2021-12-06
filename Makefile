@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS= -g -lpthread
 NCPU=2
 BASH=Projet1.bash
-HEADERS=-I	
+	
 #Compilation 
 	
 all: philo prod ecriv test-and-set
@@ -17,7 +17,7 @@ ecriv: ecrivain.o
 	$(CC) -o $@ $< $(CFLAGS) 
 	
 	
-test-and-set:  test-and-set.o
+test-and-set: test-and-set.o
 	$(CC) -o $@ $< $(CFLAGS)
 	
 %.o: %.c
@@ -43,6 +43,8 @@ mes-ecriv: ecriv
 mes-prod: prod
 	./$(BASH) output.csv $$((2 * $(NCPU))) $< 
 	
+mes-ts: test-and-set
+	./$(BASH) output.csv $$((2 * $(NCPU))) $< 
 
 #plots 
 
@@ -51,13 +53,13 @@ plot-philo: mes-philo
 
 	
 plot-prod: mes-prod
-	python3 plot.py -f "output.csv" -n "Temps ecrivain"
-	
+	python3 plot.py -f "output.csv" -n "Temps producteur"
 	
 plot-ecriv: mes-ecriv
-	python3 plot.py -f "output.csv" -n "Temps producteur"
+	python3 plot.py -f "output.csv" -n "Temps ecrivain"
 
-
+plot-ts: mes-ts
+	python3 plot.py -f "output.csv" -n "Test and set"
 
 
 
