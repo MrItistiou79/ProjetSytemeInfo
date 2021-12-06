@@ -17,7 +17,7 @@ ecriv: ecrivain.o
 	$(CC) -o $@ $< $(CFLAGS) 
 	
 	
-test-and-set: mutex.o test-and-set.o
+test-and-set:  test-and-set.o
 	$(CC) -o $@ $< $(CFLAGS)
 	
 %.o: %.c

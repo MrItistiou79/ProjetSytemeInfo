@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
 
     int n_threads = atoi(argv[1]) ;
     
- 
+    printf("hello");
     int n_readers = floor(n_threads/2);
     int n_writers = ceil(n_threads/2);
     
