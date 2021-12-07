@@ -45,6 +45,7 @@ clean :
 	-rm -f tts
 	-rm -f */*.o
 	-rm -f ecriv-aa
+	-rm -f *.csv
 
 #Mesures
 
