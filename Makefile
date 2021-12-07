@@ -46,6 +46,7 @@ clean :
 	-rm -f */*.o
 	-rm -f ecriv-aa
 	-rm -f *.csv
+	-rm -f philo-aa
 
 #Mesures
 

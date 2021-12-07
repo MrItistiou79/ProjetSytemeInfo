@@ -82,7 +82,6 @@ void* reader(void* arg) {
 }
 
 int main(int argc, char* argv[]) {
-    printf("hello");
     readcount = 0 ;
     writecount = 0 ;
 
@@ -127,6 +126,4 @@ int main(int argc, char* argv[]) {
     free(mutex) ;
     free(mutex2) ;
     free(z) ;
-    free(wsem) ;
-    free(rsem) ;
 }
