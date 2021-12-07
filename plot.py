@@ -13,8 +13,8 @@ def plot(filename, title):
 		data_moustache = []
 		names_moustache = []
 
-		nbr_threads = list(range(1,6))
-		av_time = [0]
+		nbr_threads = list(range(1,9))
+		av_time = []
 		for i in range(0, len(lines), 5):
 			#moustache
 			time = []
@@ -44,7 +44,7 @@ def plot(filename, title):
 		plt.xticks(nbr_threads, nbr_threads)
 		ax[1].set_title(title, fontsize=15)
 		plt.subplots_adjust(hspace=0.3)
-		plt.show()
+		plt.savefig("plot.png")
 
 args = parse()
 plot(args.input_file, args.title)

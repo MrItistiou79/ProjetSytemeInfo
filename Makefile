@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS= -g -lpthread
-NCPU=2
+NCPU=4
 BASH=Projet1.bash
 	
 #Compilation 
@@ -24,7 +24,8 @@ test-and-set: test-and-set.o
 	$(CC) -o $@ -c $< $(CFLAGS)
 	
 
-clean : 
+clean :
+	-rm -f *.png
 	-rm -f *.o
 	-rm -f ecriv
 	-rm -f prod
