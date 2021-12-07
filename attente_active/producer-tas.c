@@ -34,7 +34,6 @@ int create_data(){
     n_created ++ ;
     int n  = n_created ;
     mutex_unlock(mutex2) ;
-    //printf("%d\n", n_created);
     if (n <= 1024) {
         while (rand() > RAND_MAX/10000){}
     }

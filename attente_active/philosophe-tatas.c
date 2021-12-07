@@ -20,11 +20,15 @@ void* philosophe(void* arg)
         // philosophe pense
 
         if(left<right) {
+            while(baguette[left].free){}
             mutex_lock(&baguette[left]);
+            while(baguette[right].free){}
             mutex_lock(&baguette[right]);
         }
         else {
+            while(baguette[right].free){}
             mutex_lock(&baguette[right]);
+            while(baguette[left].free){}
             mutex_lock(&baguette[left]);
         }
         mange(id);

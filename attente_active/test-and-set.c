@@ -29,13 +29,8 @@ void * run(){
 
 int main(int argc, char* argv[]){
 	n_threads = atoi(argv[1]);
-	
-	printf("initialisation mutex\n");
 	mutex = (mutex_t*)malloc(sizeof(mutex_t));
-	mutex_init(mutex); 
-	
-	printf("mutex initialise \n");
-   	
+	mutex_init(mutex);
    	threads = (pthread_t*) malloc(sizeof(pthread_t) * n_threads);
 	cycle = 0;
 	
