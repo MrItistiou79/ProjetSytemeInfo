@@ -44,7 +44,7 @@ clean :
 	-rm -f test-and-set
 	-rm -f tts
 	-rm -f */*.o
-
+	-rm -f ecriv-aa
 
 #Mesures
 
