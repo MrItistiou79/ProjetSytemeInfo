@@ -13,10 +13,10 @@ typedef struct sem{
 }sem_t
 
 
-int sema_init(sem_t *sem, int val){
-	mutex_init(sem->mutex);
-	sem->val = val;
-	return 0; 
+nt sema_init(sem_t *sem, int val){
+    mutex_init(sem->mutex);
+    sem->val = val;
+    return 0; i
 	
 }
 

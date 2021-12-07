@@ -57,7 +57,7 @@ int sectionCritique(){
 void * run(){
     int count = 0;
     while (count <= 6400/n_threads){
-        while(!mutex->free){}
+        while(mutex->free){}
         mutex_lock(mutex);
         cycle++;
         sectionCritique();

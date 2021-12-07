@@ -34,16 +34,17 @@ void* philosophe (void* arg)
 
 int main(int argc, char* argv[]) {
 
-    
+
     PHILOSOPHES = atoi(argv[1]) ;
-    
-    if (PHILOSOPHES <= 1) return 0; 
-    	
+    if (PHILOSOPHES <= 1) return 0;
+
     phil = (pthread_t*) malloc(sizeof(pthread_t) * PHILOSOPHES);
     baguette = (pthread_mutex_t*) malloc(sizeof(pthread_mutex_t) * PHILOSOPHES);
+    for (int i = 0; i<PHILOSOPHES;i++){
+        pthread_mutex_init(&baguette[i], NULL);
+    }
     for (int i = 0 ; i<PHILOSOPHES ; i++) {
         int id  = i ;
-        printf("hello\n");
         pthread_create(&(phil[i]), NULL, philosophe, &id) ;
     }
     for (int i = 0 ; i<PHILOSOPHES ; i++) {
