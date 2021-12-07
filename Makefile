@@ -59,7 +59,10 @@ clean :
 	-rm -f ecriv-aa2
 	-rm -f prod-aa2
 	-rm -f philo-aa2
+	-rm -f *.csv
+	
 #Mesures
+
 mes-all : mes-philo mes-ecriv mes-prod mes-tas mes-tatas mes-philo-aa mes-ecriv-aa mes-prod-aa mes-philo-aa2 mes-ecriv-aa2 mes-prod-aa2
 
 mes-philo: philo
@@ -74,7 +77,7 @@ mes-prod: prod
 mes-tas: test-and-set
 	./$(BASH) tas.csv $$((2 * $(NCPU))) $<
 
-mes-tatas: test-and-test-and-set
+mes-tatas: tts
 	./$(BASH) tatas.csv $$((2 * $(NCPU))) $<
 	
 mes-philo-aa: philo-aa
@@ -97,6 +100,7 @@ mes-prod-aa2: prod-aa2
 
 
 #plots 
+
 plot-all : plot-philo plot-prod plot-ecriv 
 
 plot-philo: mes-philo
