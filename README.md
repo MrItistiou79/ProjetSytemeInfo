@@ -25,6 +25,6 @@ _Projet1.bash_ <file.csv> <N> <prog> : Script permettant de mesurer les performa
 ##Commandes make
 -_make all_ : compile tous les fichiers .c 
 -_make mes-all_ : exécute les commandes suivantes : mes-philo mes-ecriv mes-prod mes-tas mes-tatas mes-philo-aa mes-ecriv-aa mes-prod-aa. Chacune de ces règles permet de lancer le script bash pour le programme C correspondant, _mes-all_ permet de le lancer pour tous les programmes. 
--_make plot-all_: exécute les commandes suivantes : plot-philo plot-prod plot-ecriv plot-tas plot-tatas plot-philo-aa plot-prod-aa plot-ecriv-aa. Chacune de ces commandes permet de créer un graphe montrant les performances du programme C concerné.
+-_make plot-all_: exécute les commandes suivantes : plot-philo plot-prod plot-ecriv. Chacune de ces commandes permet de créer un graphe montrant les performances du programme C concerné.
 -_make comp-all : exécute les commandes suivantes : comp-philo comp-prod comp-ecriv comp-tas. Chacune de ces commandes permet de lancer le script python, qui compare les performances pour un algorithme qui utilise la synchronisation POSIX et le même algorithme qui utilise la synchronisation attente active. 
 -_make clean_ : permet de supprimer tous les fichiers générés par la compilation, ainsi que les fichiers csv.
