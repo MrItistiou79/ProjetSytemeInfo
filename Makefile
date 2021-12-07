@@ -5,7 +5,7 @@ BASH=Projet1.bash
 	
 #Compilation 
 	
-all: philo prod ecriv test-and-set test-and-test-and-set
+all: philo prod ecriv test-and-set tts ecriv-aa philo-aa prod-aa
 
 philo: philosophe.o
 	$(CC) -o $@ $< $(CFLAGS) 
@@ -16,12 +16,21 @@ prod: producer.o
 ecriv: ecrivain.o
 	$(CC) -o $@ $< $(CFLAGS) 
 
-test-and-set: test-and-set.o
-	$(CC) -o $@ $< $(CFLAGS)
-
-test-and-test-and-set: test-and-test-and-set.o
-	$(CC) -o $@ $< $(CFLAGS)
-
+ecriv-aa: attente_active/ecrivain-tas.o attente_active/semaphore.o attente_active/mutex.o
+	$(CC) -o $@ $^ $(CFLAGS)
+	
+philo-aa: attente_active/philosophe-tas.o attente_active/semaphore.o attente_active/mutex.o
+	$(CC) -o $@ $^ $(CFLAGS)
+	
+prod-aa:  attente_active/producer-tas.o attente_active/semaphore.o attente_active/mutex.o
+	$(CC) -o $@ $^ $(CFLAGS)
+	
+test-and-set: attente_active/test-and-set.o attente_active/mutex.o
+	$(CC) -o $@ $^ $(CFLAGS)
+	
+tts : attente_active/test-and-test-and-set.o attente_active/mutex.o
+	$(CC) -o $@ $^ $(CFLAGS)
+	
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 	
@@ -33,7 +42,8 @@ clean :
 	-rm -f prod
 	-rm -f philo
 	-rm -f test-and-set
-	-rm -f test-and-test-and-set
+	-rm -f tts
+	-rm -f */*.o
 
 
 #Mesures
