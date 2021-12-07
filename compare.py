@@ -9,7 +9,7 @@ def parse():
                         type=str)
     parser.add_argument("-g", "--input-file-2", help="path to the csv file with the computed results with TAS",
                         type=str)
-    parser.add_argument("-h", "--input-file-3", help="path to the csv file with the computed results with TATAS",
+    parser.add_argument("-i", "--input-file-3", help="path to the csv file with the computed results with TATAS",
                         type=str)
     parser.add_argument("-n", "--title", help="Title of the graph", type=str, default=None)
     return parser.parse_args()
@@ -74,6 +74,7 @@ def plot2(filename_TAS, filename_TATAS, title):
             plt.plot(nbr_threads, av_time_1, label="TAS")
             plt.plot(nbr_threads, av_time_2, label="TATAS")
             plt.xticks(nbr_threads, nbr_threads)
+            plt.legend()
             plt.grid(True)
             plt.title(title)
 
@@ -82,6 +83,6 @@ def plot2(filename_TAS, filename_TATAS, title):
 
 args = parse()
 if args.check == 2:
-    plot2(args.args.input_file_1, args.input_file_2, args.title)
+    plot2(args.input_file_1, args.input_file_2, args.title)
 else:
     plot3(args.input_file_1, args.input_file_2, args.input_file_3, args.title)

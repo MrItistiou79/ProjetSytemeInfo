@@ -77,7 +77,7 @@ mes-prod: prod
 mes-tas: test-and-set
 	./$(BASH) tas.csv $$((2 * $(NCPU))) $<
 
-mes-tatas: test-and-test-and-set
+mes-tatas: tts
 	./$(BASH) tatas.csv $$((2 * $(NCPU))) $<
 
 mes-philo-aa: philo-aa
@@ -118,13 +118,13 @@ plot-ecriv: mes-ecriv
 comp-all : comp-philo comp-prod comp-ecriv comp-tas
 
 comp-philo:mes-philo mes-philo-aa mes-philo-aa2
-	python3 compare.py -a 3 -f "philosophe.csv" -g "philosophe-aa.csv" -h "philosophe-aa2.csv" -n "Comparaison POSIX vs attente active philosophe"
+	python3 compare.py -a 3 -f "philosophe.csv" -g "philosophe-aa.csv" -i "philosophe-aa2.csv" -n "Comparaison POSIX vs attente active philosophe"
 
 comp-prod:mes-prod mes-prod-aa mes-prod-aa2
-	python3 compare.py -a 3 -f "producer.csv" -g "producer-aa.csv" -h "producer-aa2.csv" -n "Comparaison POSIX vs attente active producer"
+	python3 compare.py -a 3 -f "producer.csv" -g "producer-aa.csv" -i "producer-aa2.csv" -n "Comparaison POSIX vs attente active producer"
 
 comp-ecriv:mes-ecriv  mes-ecriv-aa mes-ecriv-aa2
-	python3 compare.py -a 3 -f "ecrivain.csv" -g "ecrivain-aa.csv" -h "ecrivain-aa2.csv" -n "Comparaison POSIX vs attente active ecrivain"
+	python3 compare.py -a 3 -f "ecrivain.csv" -g "ecrivain-aa.csv" -i "ecrivain-aa2.csv" -n "Comparaison POSIX vs attente active ecrivain"
 
 comp-tas:mes-tas mes-tatas
-	python3 compare.py -a 2 -f "tas.csv" -g "tatas.csv" -n "Comparaison test-and-set vs test-and-test-and-set"
+	python3 compare.py -a 2 -f "tas.csv" -g "tatas.csv" -i "rien" -n "Comparaison test-and-set vs test-and-test-and-set"
