@@ -47,7 +47,7 @@ clean :
 	-rm -f ecriv-aa
 
 #Mesures
-
+mes-all : mes-philo mes-ecriv mes-prod mes-tas mes-tatas mes-philo-aa mes-ecriv-aa mes-prod-aa
 mes-philo: philo
 	./$(BASH) philosophe.csv $$((2 * $(NCPU))) $<
 	 	
@@ -74,7 +74,7 @@ mes-prod-aa: prod-aa
 
 
 #plots 
-plot-all : plot-philo plot-prod plot-ecriv plot-tas plot-tatas plot-philo-aa plot-prod-aa plot-ecriv-aa
+plot-all : plot-philo plot-prod plot-ecriv 
 
 plot-philo: mes-philo
 	python3 plot.py -f "philosophe.csv" -n "Temps philosophe"
@@ -84,21 +84,6 @@ plot-prod: mes-prod
 	
 plot-ecriv: mes-ecriv
 	python3 plot.py -f "ecrivain.csv" -n "Temps ecrivain"
-
-plot-tas: mes-tas
-	python3 plot.py -f "tas.csv" -n "Test and set"
-
-plot-tatas: mes-tatas
-	python3 plot.py -f "tatas.csv" -n "Test and test and set"
-
-plot-philo-aa: mes-philo-aa
-	python3 plot.py -f "philosophe-aa.csv" -n "Temps philosophe attente active"
-
-plot-prod-aa: mes-prod-aa
-	python3 plot.py -f "producer-aa.csv" -n "Temps producteur attente active"
-	
-plot-ecriv-aa: mes-ecriv-aa
-	python3 plot.py -f "ecrivain-aa.csv" -n "Temps ecrivain attente active"
 
 
 #comparaison
