@@ -21,7 +21,7 @@ def plot3(filename_POSIX, filename_TAS, filename_TATAS, title):
             with open(filename_TATAS, 'r') as h:
                 lines_f = f.readlines()[1::]
                 lines_g = g.readlines()[1::]
-                lines_h = h.readline()[1::]
+                lines_h = h.readlines()[1::]
 
                 nbr_threads = list(range(1, 9))  # number of threads
 
@@ -45,6 +45,7 @@ def plot3(filename_POSIX, filename_TAS, filename_TATAS, title):
                 plt.plot(nbr_threads, av_time_2, label="TAS")
                 plt.plot(nbr_threads, av_time_3, label="TATAS")
                 plt.xticks(nbr_threads, nbr_threads)
+                plt.legend()
                 plt.grid(True)
                 plt.title(title)
 
