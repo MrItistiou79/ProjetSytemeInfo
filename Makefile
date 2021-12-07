@@ -100,15 +100,23 @@ plot-prod-aa: mes-prod-aa
 plot-ecriv-aa: mes-ecriv-aa
 	python3 plot.py -f "ecrivain-aa.csv" -n "Temps ecrivain attente active"
 
+
 #comparaison
 
-comp-philo:mes-philo
+comp-all : comp-philo comp-prod comp-ecriv comp-tas
 
-comp-prod:mes-prod
-
-comp-ecriv:mes-ecriv
-
+comp-philo:mes-philo mes-philo-aa
+	python3 compare.py -f "philosophe.csv" -g "philosophe-aa.csv" -n "Comparaison POSIX vs attente active philosophe"
+	
+comp-prod:mes-prod mes-prod-aa
+	python3 compare.py -f "producer.csv" -g "producer-aa.csv" -n "Comparaison POSIX vs attente active producer"
+	
+comp-ecriv:mes-ecriv mes-ecriv-aa
+	python3 compare.py -f "ecrivain.csv" -g "ecrivain-aa.csv" -n "Comparaison POSIX vs attente active ecrivain"
+	
 comp-tas:mes-tas mes-tatas
+	python3 compare.py -f "tas.csv" -g "tatas.csv" -n "Comparaison test-and-set vs test-and-test-and-set"
+	
 
 
 
