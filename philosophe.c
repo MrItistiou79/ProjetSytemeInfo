@@ -7,7 +7,9 @@ pthread_t *phil;
 pthread_mutex_t *baguette;
 int PHILOSOPHES;
 
-void mange(int id) {}
+void mange(int id) {
+	printf("hello");
+}
 
 void* philosophe (void* arg)
 {
@@ -37,7 +39,7 @@ int main(int argc, char* argv[]) {
 
     PHILOSOPHES = atoi(argv[1]) ;
     if (PHILOSOPHES <= 1) return 0;
-
+    printf("hello");
     phil = (pthread_t*) malloc(sizeof(pthread_t) * PHILOSOPHES);
     baguette = (pthread_mutex_t*) malloc(sizeof(pthread_mutex_t) * PHILOSOPHES);
     for (int i = 0; i<PHILOSOPHES;i++){
@@ -50,6 +52,7 @@ int main(int argc, char* argv[]) {
     for (int i = 0 ; i<PHILOSOPHES ; i++) {
         pthread_join(phil[i], NULL) ;
     }
+    printf("\n");
     free(phil) ;
     free(baguette) ;
 }

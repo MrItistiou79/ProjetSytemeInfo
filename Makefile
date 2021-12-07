@@ -99,6 +99,10 @@ mes-prod-aa2: prod-aa2
 	./$(BASH) producer-aa2.csv $$((2 * $(NCPU))) $<
 
 
+#plots 
+
+plot-all : plot-philo plot-prod plot-ecriv 
+
 #plots
 
 plot-all : plot-philo plot-prod plot-ecriv
